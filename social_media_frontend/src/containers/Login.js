@@ -1,0 +1,81 @@
+import React from "react";
+import { useEffect } from "react";
+import GoogleLogin from "react-google-login";
+import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import shareVideo from "../assets/share.mp4";
+import logo from "../assets/logowhite.png";
+import LoginButton from "../components/LoginButton";
+import LogoutButton from "../components/LogoutButton";
+// import { gapi } from "gapi-script";
+// import { client } from '../client';
+
+export const Login = () => {
+  // const responseGoogle = (response) => {
+  //   console.log(response);
+  //   localStorage.setItem("user", JSON.stringify(response.profileObj));
+  //   const { name, googleId, imageUrl } = response.profileObj;
+  //   const doc = {
+  //     _id: googleId,
+  //     _type: "user",
+  //     userName: name,
+  //     image: imageUrl,
+  //   };
+  // client.createIfNotExists(doc).then(() => {     Pasted from github
+  //   navigate("/", { replace: true });
+  // });
+
+  // useEffect(() => {
+  //   const start = () => {
+  //     gapi.client.init({
+  //       clientId: process.env.REACT_APP_GOOGLE_API_TOKEN,
+  //       scope: "",
+  //     });
+  //   };
+
+  //   gapi.load("client:auth2", start);
+  // });
+
+  return (
+    <div className="flex justify-start items-center flex-col h-screen">
+      <div className="relative w-full h-full">
+        <video
+          src={shareVideo}
+          type="video/mp4"
+          loop
+          controls={false}
+          muted
+          autoPlay
+          className="w-full h-full object-cover"
+        />
+
+        <div className="absolute flex flex-col justify-center items-center top-0 left-0 right-0 bottom-0 bg-blackOverlay">
+          <div className="p-5">
+            <img src={logo} width="130px" alt="Social Media Logo" />
+          </div>
+          <div className="shadow-2x1">
+            <LoginButton />
+            {/* <LogoutButton /> */}
+            {/*For quick logout*/}
+            {/* <GoogleLogin
+              clientId="42827215098-0cfn07hl4fecvoj4se21prge2j64f3j3.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  type="button"
+                  className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  <FcGoogle className="mr-4" /> Sign in with google
+                </button>
+              )}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy="single_host_origin"
+            /> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
