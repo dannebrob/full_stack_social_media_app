@@ -11,7 +11,7 @@ root.render(
   <Router>
     <Auth0Provider
       domain="dev-v60nug6d.us.auth0.com"
-      clientId="hVtoIQvINE3jXgKR6exylFsJHjS4LpAa"
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       redirectUri={window.location.origin}
     >
       <App />
