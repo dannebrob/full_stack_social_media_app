@@ -9,10 +9,20 @@ const isNotActiveStyle =
 const isActiveStyle =
   "flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize";
 
+const categories = [
+  { name: "Animals" },
+  { name: "Wallpaers" },
+  { name: "Photography" },
+  { name: "Gaming" },
+  { name: "Other" },
+];
+
+const renderCategories = categories.slice(0, categories.length - 1);
 function Sidebar(user, closeToggle) {
   const handleCloseSidebar = () => {
     if (closeToggle) closeToggle(false);
   };
+
   return (
     <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar">
       <div className="flex flex-col">
@@ -30,16 +40,43 @@ function Sidebar(user, closeToggle) {
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }
+            onClick={handleCloseSidebar}
           >
             <RiHomeFill /> Home
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2x1:text-xl">
-            {" "}
+          <h3 className="mt-2 px-5 text-base 2xl:text-xl">
             Discover categories
           </h3>
+          {renderCategories.map((category) => {
+            return (
+              <NavLink
+                to={`/category/${category.name}`}
+                className={({ isActive }) =>
+                  isActive ? isActiveStyle : isNotActiveStyle
+                }
+                onClick={handleCloseSidebar}
+                key={category.name}
+              >
+                {category.name}
+              </NavLink>
+            );
+          })}
         </div>
       </div>
-      Sidebar
+      {/* {user && (
+        <Link
+          to={`user-profile/${user._id}`}
+          className="flex my-5 mb-5 gap-2 p-2 items-center bg-white rounded-lg shadow-lg crusor-pointer"
+          onClick={handleCloseSidebar}
+        >
+          <img
+            src={user.user.image}
+            className="w-10 h-10 rounded-full"
+            alt="User Profile"
+          />
+          <p>{user.user.userName}</p>
+        </Link>
+      )} */}
     </div>
   );
 }
