@@ -11,7 +11,7 @@ import logo from "../assets/logo.png";
 import { userQuery } from "../utils/data";
 
 export const Home = () => {
-  const [ToggleSidabar, setToggleSidabar] = useState(false);
+  const [ToggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
 
@@ -45,7 +45,7 @@ export const Home = () => {
             fontSize={40}
             className="cursor-pointer"
             onClick={() => {
-              setToggleSidabar(true);
+              setToggleSidebar(true);
             }}
           />
           <Link to="/">
@@ -55,18 +55,18 @@ export const Home = () => {
             <img src={user?.image} alt="image" className="w-28" />
           </Link>
         </div>
-        {ToggleSidabar && (
+        {ToggleSidebar && (
           <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
             <div className="absolute w-full flex justify-end items-center p-2">
               <AiFillCloseCircle
                 fontSize={30}
                 className="cursor-pointer"
                 onClick={() => {
-                  setToggleSidabar(false);
+                  setToggleSidebar(false);
                 }}
               />
             </div>
-            <Sidebar closeToggle={setToggleSidabar} user={user && user} />
+            <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>
         )}
       </div>
