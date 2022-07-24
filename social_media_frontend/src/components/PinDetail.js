@@ -1,7 +1,8 @@
 import React from "react";
 
-function PinDetail() {
+const PinDetail = ({ user }) => {
+  console.log(user);
   return <div>PinDetail</div>;
-}
+};
 
 export default PinDetail;
