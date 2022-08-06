@@ -61,7 +61,7 @@ function UserProfile() {
 
   const logout = () => {
     localStorage.clear();
-    navigate();
+    navigate("/login");
   };
 
   if (!user) {

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { MdOutlineLogin } from "react-icons/md";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profile";
 import { Sidebar, UserProfile } from "../components";
@@ -20,7 +21,7 @@ export const Home = () => {
   // console.log(userInfo);
 
   useEffect(() => {
-    const query = userQuery(userInfo.googleId);
+    const query = userQuery(userInfo?.googleId);
     console.log(query);
     client.fetch(query).then((data) => {
       // console.log(data[0]);
@@ -49,9 +50,18 @@ export const Home = () => {
           <Link to="/">
             <img src={logo} alt="logo" className="w-28" />
           </Link>
-          <Link to={`user-profile/${user?._id}`}>
-            <img src={user?.image} alt="image" className="w-28" />
-          </Link>
+          {user ? (
+            <Link to={`user-profile/${user?._id}`}>
+              <img src={user?.image} alt="image" className="w-28" />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="flex justify-center items-center bg-red-500 pl-5 pr-5 pt-2 pb-2 hover:bg-red-200 rounded-full cursor-pointer font-bold">
+                <MdOutlineLogin className="mr-3" />
+                Log me in
+              </button>
+            </Link>
+          )}
         </div>
         {ToggleSidebar && (
           <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">

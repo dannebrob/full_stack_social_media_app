@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
-import GoogleLogin from "react-google-login";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { gapi } from "gapi-script";
+import { GoogleLogin } from "react-google-login";
 // import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";

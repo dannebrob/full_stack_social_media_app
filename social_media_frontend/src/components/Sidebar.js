@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
+import { MdOutlineLogin } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import logo from "../assets/logo.png";
 
@@ -38,6 +39,15 @@ function Sidebar({ user, closeToggle }) {
           >
             <RiHomeFill /> Home
           </NavLink>
+          {!user && (
+            <NavLink
+              to="/login"
+              className="flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize"
+              onClick={handleCloseSidebar}
+            >
+              <MdOutlineLogin /> Login
+            </NavLink>
+          )}
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">
             Discover categories
           </h3>
